@@ -5,275 +5,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="stylesheet" href="static/ctDNA_prog.css" />
 </head>
-<script async defer data-domain="ctdna.org" src="https://plausible.io/js/plausible.js"></script>
+<!-- <script async defer data-domain="ctdna.org" src="https://plausible.io/js/plausible.js"></script> -->
 
 <style>
-    body {
-        width: 950px;
-    }
-    
-    * {
-        padding: 0;
-        margin: 0;
-        font: 24px sans-serif;
-    }
-    
-    .radio-toolbar input[type="radio"] {
-        display: none;
-    }
-    
-    .radio-toolbar input[type="radio"]:checked+label {
-        background-color: #a5dc86;
-    }
-    
-    #header>h1 {
-        position: relative;
-        width: 100%;
-        font-size: 72px;
-        text-align: center;
-    }
-    
-    #header>h2 {
-        position: relative;
-        width: 100%;
-        font-size: 1.5em;
-        text-align: center;
-    }
-    
-    #clinical_values {
-        position: relative;
-        top: 0px;
-        left: 0px;
-        height: 800px;
-        margin-top: 40px;
-        margin-left: 50px;
-    }
-    
-    #clinical_values>img {
-        position: absolute;
-        left: 300px;
-        height: 800px;
-    }
-    
-    #clinical_values>h1 {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    
-    #clinical_values>div {
-        width: 15em;
-        height: 1.5em;
-    }
-    
-    #clinical_values>div>*:nth-child(1) {
-        position: absolute;
-        left: 0;
-        width: 5.6em;
-        text-align: right;
-    }
-    
-    #clinical_values>div>input[type="text"] {
-        height: 1.2em;
-        padding: 0;
-        text-align: right;
-    }
-    
-    #clinical_values>div>*:nth-child(2) {
-        position: absolute;
-        left: 6em;
-        width: 3.5em;
-    }
-    
-    #clinical_values>div>*:nth-child(3) {
-        position: absolute;
-        left: 10em;
-        width: 5em;
-    }
-    
-    #clinical_values>div>.radio:nth-child(2) {
-        width: 10em;
-    }
-    
-    #clinical_values>div>.radio-toolbar:nth-child(2) {
-        width: 10em;
-    }
-    
-    .radio>div {
-        display: inline-block;
-        cursor: pointer;
-        background-color: #e4e4e4;
-        color: rgba(0, 0, 0, 0.6);
-        text-align: center;
-        padding: 0 0.5em;
-        height: 1.2em;
-        line-height: 1.2em;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-        transition: all 0.1s ease-in-out;
-    }
-    
-    .radio-toolbar>label {
-        display: inline-block;
-        cursor: pointer;
-        background-color: #e4e4e4;
-        color: rgba(0, 0, 0, 0.6);
-        text-align: center;
-        padding: 0 0.5em;
-        height: 1.2em;
-        line-height: 1.2em;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-        transition: all 0.1s ease-in-out;
-        border-spacing: 0;
-        margin-inline: -0.2em;
-    }
-    
-    .radio>input:first-of-type {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .radio>input:last-of-type {
-        border-radius: 0 4px 4px 0;
-    }
-    
-    .radio>input.selected {
-        background-color: #a5dc86;
-        box-shadow: none;
-    }
-    
-    .radio-toolbar>label:first-of-type {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .radio-toolbar>label:last-of-type {
-        border-radius: 0 4px 4px 0;
-    }
-    
-    .radio-toolbar>label.selected {
-        background-color: #a5dc86;
-        box-shadow: none;
-    }
-    
-    .radio>div:first-of-type {
-        border-radius: 4px 0 0 4px;
-    }
-    
-    .radio>div:last-of-type {
-        border-radius: 0 4px 4px 0;
-    }
-    
-    .radio>div.selected {
-        background-color: #a5dc86;
-        box-shadow: none;
-    }
-    
-    #clinical_values>button {
-        position: absolute;
-        top: 340px;
-        width: 280px;
-        left: 30px;
-        background-color: #eee;
-        padding: 8px 20px;
-        border-radius: 5px;
-        border: 1px black solid;
-    }
-    
-    #results {
-        position: relative;
-        top: 180px;
-        left: 25px;
-        width: 300px;
-        font-size: 30px;
-        text-align: center;
-    }
-    
-    #results #estimate {
-        font-size: 60px;
-    }
-    
-    #neighbors {
-        position: relative;
-        width: 100%;
-        margin-left: 40px;
-        margin-top: 20px;
-    }
-    
-    #neighbors>h1 {
-        font-size: 30px;
-    }
-    
-    #documentation {
-        position: relative;
-        width: 100%;
-        margin: 20px 0 40px 40px;
-    }
-    
-    #documentation h1 {
-        font-size: 30px;
-        margin-top: 30px;
-    }
-    
-    #documentation p {
-        font-size: 20px;
-        margin-top: 10px;
-    }
-    
-    #documentation a {
-        font-size: 20px;
-    }
-    
-    #documentation em {
-        font-size: 20px;
-        text-decoration: underline;
-    }
-    
-    #documentation img {
-        max-width: 950px;
-        margin-top: 10px;
-    }
-    /* Visual style for neighbor table */
-    
-    table {
-        font-size: 16px;
-        margin-top: 10px;
-        max-width: 900px;
-        border: none;
-        border-collapse: collapse;
-    }
-    
-    table tr {
-        padding: 4px 0;
-    }
-    
-    table tr:first-child {
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-    }
-    
-    table tr:last-child {
-        border-bottom: 1px solid black;
-    }
-    
-    td {
-        text-align: center;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-    }
-    
-    .hidden {
-        display: none;
-    }
+
 </style>
 
-<!-- <div class="radio-toolbar">
-  <input type="radio" id="radio1" name="radios" value="all" checked>
-  <label for="radio1">All</label>
-  <input type="radio" id="radio2" name="radios" value="false">
-  <label for="radio2">Open</label>
-  <input type="radio" id="radio3" name="radios" value="true">
-  <label for="radio3">Archived</label>
-</div> -->
 
 <body>
     <div id="header">
@@ -298,43 +37,43 @@
         <div id="ecog">
             <label>ECOG PS:</label>
             <div class="radio-toolbar">
-                <input type="radio" id="radio1" name="ecog" value="true" />
-                <label for="radio1">0</label>
+                <input type="radio" id="ecog_radio1" name="ecog" value="true" />
+                <label for="ecog_radio1">0</label>
 
-                <input type="radio" id="radio2" name="ecog" value="false" />
-                <label for="radio2">1</label>
+                <input type="radio" id="ecgo_radio2" name="ecog" value="false" />
+                <label for="ecgo_radio2">1</label>
 
-                <input type="radio" id="radio3" name="ecog" value="2+" />
-                <label for="radio3">2+</label>
+                <input type="radio" id="ecog_radio3" name="ecog" value="2+" />
+                <label for="ecog_radio3">2+</label>
 
-                <input type="radio" id="radio4" name="ecog" value="n/a" checked />
-                <label for="radio4">N/A</label>
+                <input type="radio" id="ecog_radio4" name="ecog" value="n/a" checked />
+                <label for="ecog_radio4">N/A</label>
             </div>
         </div>
         <div id="liver_mets">
             <label>Liver mets:</label>
             <div class="radio-toolbar">
-                <input type="radio" id="radio1" name="liver_mets" value="true" />
-                <label for="radio1">Yes</label>
+                <input type="radio" id="liver_radio1" name="liver_mets" value="true" />
+                <label for="liver_radio1">Yes</label>
 
-                <input type="radio" id="radio2" name="liver_mets" value="false" />
-                <label for="radio2">No</label>
+                <input type="radio" id="liver_radio2" name="liver_mets" value="false" />
+                <label for="liver_radio2">No</label>
 
-                <input type="radio" id="radio3" name="liver_mets" value="n/a" checked />
-                <label for="radio3">N/A</label>
+                <input type="radio" id="liver_radio3" name="liver_mets" value="n/a" checked />
+                <label for="liver_radio3">N/A</label>
             </div>
         </div>
         <div id="lung_mets">
             <label>Lung mets:</label>
             <div class="radio-toolbar">
-                <input type="radio" id="radio1" name="lung_mets" value="true" />
-                <label for="radio1">Yes</label>
+                <input type="radio" id="lung_radio1" name="lung_mets" value="true" />
+                <label for="lung_radio1">Yes</label>
 
-                <input type="radio" id="radio2" name="lung_mets" value="false" />
-                <label for="radio2">No</label>
+                <input type="radio" id="lung_radio2" name="lung_mets" value="false" />
+                <label for="lung_radio2">No</label>
 
-                <input type="radio" id="radio3" name="lung_mets" value="n/a" checked />
-                <label for="radio3">N/A</label>
+                <input type="radio" id="lung_radio3" name="lung_mets" value="n/a" checked />
+                <label for="lung_radio3">N/A</label>
             </div>
         </div>
         <!-- <div id="bone_mets">
@@ -348,14 +87,14 @@
         <div id="bone_mets">
             <label>Bone mets:</label>
             <div class="radio-toolbar">
-                <input type="radio" id="radio1" name="bone_mets" value="true" />
-                <label for="radio1">Yes</label>
+                <input type="radio" id="bone_radio1" name="bone_mets" value="true" />
+                <label for="bone_radio1">Yes</label>
 
-                <input type="radio" id="radio2" name="bone_mets" value="false" />
-                <label for="radio2">No</label>
+                <input type="radio" id="bone_radio2" name="bone_mets" value="false" />
+                <label for="bone_radio2">No</label>
 
-                <input type="radio" id="radio3" name="bone_mets" value="n/a" checked />
-                <label for="radio3">N/A</label>
+                <input type="radio" id="bone_radio3" name="bone_mets" value="n/a" checked />
+                <label for="bone_radio3">N/A</label>
             </div>
         </div>
 
@@ -416,128 +155,5 @@
     </div>
 </body>
 
-<script type="text/javascript">
-    // TODO: Document that cfDNA concentrations should be quantified with Qubit.
-
-    function $(query) {
-        return document.querySelector(query);
-    }
-
-    function $$(query) {
-        return document.querySelectorAll(query);
-    }
-    HTMLElement.prototype.clear = function() {
-        this.innerHTML = "";
-    };
-    HTMLElement.prototype.append = function(html) {
-        this.insertAdjacentHTML("beforeend", html);
-    };
-
-    function async_get(url, success_handler) {
-        var request = new XMLHttpRequest();
-        request.open("GET", url, true);
-        request.onload = function() {
-            if (this.status == 200 && success_handler) success_handler(this.response);
-        };
-        request.send();
-    }
-
-    function clear_prediction(d) {
-        $("#results").innerHTML = "";
-        $("#neighbors").innerHTML = "";
-    }
-
-    // TODO: Use bootstrapping to estimate prediction interval for KNN model.
-    function display_prediction(d) {
-        let lines = d.split("\n");
-        let estimate = lines.shift(); // First line gives ctDNA% estimate
-        if (estimate == "0.0") {
-            estimate = "0 - 2";
-        }
-        $(
-            "#results"
-        ).innerHTML = `Predicted ctDNA%<br><span id="estimate">${estimate}%</span><br>for a patient with progressive disease`;
-
-        // Populate the nearest neighbors table
-        let neighbors = lines.filter((line) => line.trim() != "");
-
-        let html = `<h1>Estimate is based on these ${neighbors.length} patients with similar characteristics</h1>`;
-        html += `<table><tr>
-		<td>cfDNA yield (ng/mL)</td>
-		<td>PSA (ng/mL)</td>
-		<td>LDH (ULN)</td>
-	@@ -237,63 +475,74 @@ <h1>Who created this website?</h1>
-		<td>ctDNA (%)</td>
-	</tr>`;
-
-        for (let line of neighbors) {
-            html += `<tr>`;
-            for (let col of line.split("\t")) {
-                html += `<td>${col}</td>`;
-            }
-            html += `</tr>`;
-        }
-        html += `</table>`;
-
-        $("#neighbors").innerHTML = html;
-        $("#neighbors").classList.remove("hidden");
-    }
-
-    document.addEventListener("DOMContentLoaded", function(e) {
-        $("#predict_button").addEventListener("click", (e) => {
-            let cfdna_yield = $("#cfdna_yield > input").value;
-            let psa = $("#psa > input").value;
-            let ldh = $("#ldh > input").value;
-            let alp = $("#alp > input").value;
-            let ecog = $("#ecog .selected").textContent;
-            let bone_mets = $("#bone_mets .selected").textContent;
-            let lung_mets = $("#lung_mets .selected").textContent;
-            let liver_mets = $("#liver_mets .selected").textContent;
-
-            let query = `/predict?`;
-            if (bone_mets != "N/A") {
-                query += `bone_mets=${bone_mets == "Yes"}&`;
-            }
-            if (lung_mets != "N/A") {
-                query += `lung_mets=${lung_mets == "Yes"}&`;
-            }
-            if (liver_mets != "N/A") {
-                query += `liver_mets=${liver_mets == "Yes"}&`;
-            }
-            if (cfdna_yield != "") {
-                query += `cfdna_yield=${cfdna_yield}&`;
-            }
-            if (psa != "") {
-                query += `psa=${psa}&`;
-            }
-            if (ldh != "") {
-                query += `ldh=${ldh}&`;
-            }
-            if (alp != "") {
-                query += `alp=${alp}&`;
-            }
-            if (ecog != "N/A") {
-                query += `ecog=${ecog}&`;
-            }
-
-            // Remove the trailing ampersand character and send the query
-            query = query.replace(/&$/, "");
-            if (query.endsWith("?") == false) {
-                async_get(query, display_prediction);
-            }
-        });
-
-        // Make the radio buttons functional
-        for (let radio of $$(".radio")) {
-            radio.addEventListener("click", (e) => {
-                if (e.target.parentElement.classList.contains("radio")) {
-                    for (let child of e.target.parentElement.children) {
-                        child.classList.remove("selected");
-                    }
-                    e.target.classList.add("selected");
-                    clear_prediction();
-                }
-            });
-        }
-    });
+<script type="text/javascript" src="javascript/ctDNA_prog.js">
 </script>
