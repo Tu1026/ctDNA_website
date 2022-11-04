@@ -1,0 +1,19 @@
+syntax = "proto2";
+
+package samples;
+
+message Sample {
+  optional double cfDNA_ng_mL_plasma = 1 [default = -1];
+  optional double Albumin = 2 [default = -1];
+  optional double LDH = 3 [default = -1];
+  optional double ALP = 4 [default = -1];
+  optional double PSA = 5 [default = -1];
+  optional int32 liver_met = 6 [default = -1];
+  optional int32 lung_met = 7 [default = -1];
+  optional int32 ecog = 8 [default = -1];
+}
+
+message Classification{
+  optional bool label = 1;
+}
+
