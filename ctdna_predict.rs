@@ -1,6 +1,7 @@
 
 #[macro_use] extern crate lazy_static;
 #[macro_use] mod common;
+mod samples;
 
 use rocket::{launch, get, routes, fs::NamedFile};
 use rocket::response::status;
@@ -12,31 +13,31 @@ use std::cmp::Ordering;
 use rocket::form::Form;
 use rocket::FromForm;
 use rocket::response::Debug;
-	
+use sample::Sample;	
 
 lazy_static! {
 	static ref SAMPLES: Vec<ProstateCancerSample> = load_samples();
 }
 
-#[derive(FromForm, Debug)]
-struct Sample {
-	// #[field(default = -1.0)]
-	cfdna_yield: Option<f32>,
-	// #[field(default = -1.0)]
-	psa: Option<f32>,
-	// #[field(default = -1.0)]
-	ldh: Option<f32>,
-	// #[field(default = -1.0)]
-	alp: Option<f32>,
-	// #[field(default = -1.0)]
-	albumin: Option<f32>,
-	// #[field(default = -1)]
-	ecog: Option<i32>,
-	// #[field(default = -1)]
-	liver_mets: Option<i32>,
-	// #[field(default = -1)]
-	lung_mets: Option<i32>,
-}
+// #[derive(FromForm, Debug)]
+// struct Sample {
+// 	// #[field(default = -1.0)]
+// 	cfdna_yield: Option<f32>,
+// 	// #[field(default = -1.0)]
+// 	psa: Option<f32>,
+// 	// #[field(default = -1.0)]
+// 	ldh: Option<f32>,
+// 	// #[field(default = -1.0)]
+// 	alp: Option<f32>,
+// 	// #[field(default = -1.0)]
+// 	albumin: Option<f32>,
+// 	// #[field(default = -1)]
+// 	ecog: Option<i32>,
+// 	// #[field(default = -1)]
+// 	liver_mets: Option<i32>,
+// 	// #[field(default = -1)]
+// 	lung_mets: Option<i32>,
+// }
 
 #[derive(Debug)]
 struct ProstateCancerSample {

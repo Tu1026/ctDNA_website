@@ -19,14 +19,13 @@
 #![allow(unused_results)]
 #![allow(unused_mut)]
 use rocket::FromForm;
-
+//! Generated file from `samples.proto`
 
 /// Generated files are compatible only with the same version
 /// of protobuf runtime.
 const _PROTOBUF_VERSION_CHECK: () = ::protobuf::VERSION_3_2_0;
 
 #[derive(PartialEq,Clone,Default,Debug, FromForm)]
-#[form(lenient)]
 // @@protoc_insertion_point(message:samples.Sample)
 pub struct Sample {
     // message fields
