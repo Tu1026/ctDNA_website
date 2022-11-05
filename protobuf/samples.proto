@@ -3,7 +3,7 @@ syntax = "proto2";
 package samples;
 
 message Sample {
-  optional double cfDNA_ng_mL_plasma = 1 [default = -1];
+  optional double cfdna_yield = 1 [default = -1];
   optional double Albumin = 2 [default = -1];
   optional double LDH = 3 [default = -1];
   optional double ALP = 4 [default = -1];
