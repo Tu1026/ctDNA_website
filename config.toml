@@ -1,0 +1,5 @@
+[build]
+target-dir = "."
+
+[env]
+RUST_BACKTRACE = 1

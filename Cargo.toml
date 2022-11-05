@@ -5,23 +5,23 @@ version = "0.1.0"
 authors = ["Matti Annala <matti.annala@uta.fi>"]
 
 
-[features]
-vendored-zmq = ['zmq/vendored']
+# [features]
+# vendored-zmq = ['zmq/vendored']
 
-[build]
-target-dir = "."
+
 
 [dependencies]
 rocket = "0.5.0-rc.2"
 lazy_static = "1"
-zmq = "0.9"
-polars = "0.24.3"
+zmq = "0.10.0"
 quick-protobuf = "0.8.0"
 protobuf = "3.2.0"
 protobuf-codegen = "3.2.0"
+
 
 
 [[bin]]
 name = "ctdna"
 # path = "test_py/main.rs"
 path = "ctdna_predict.rs"
+
