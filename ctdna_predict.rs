@@ -11,22 +11,31 @@ use std::fmt::Write;
 use std::cmp::Ordering;
 use rocket::form::Form;
 use rocket::FromForm;
+use rocket::response::Debug;
 	
 
 lazy_static! {
 	static ref SAMPLES: Vec<ProstateCancerSample> = load_samples();
 }
 
-#[derive(FromForm)]
-struct WebInput {
+#[derive(FromForm, Debug)]
+struct Sample {
+	// #[field(default = -1.0)]
 	cfdna_yield: Option<f32>,
+	// #[field(default = -1.0)]
 	psa: Option<f32>,
+	// #[field(default = -1.0)]
 	ldh: Option<f32>,
+	// #[field(default = -1.0)]
 	alp: Option<f32>,
+	// #[field(default = -1.0)]
+	albumin: Option<f32>,
+	// #[field(default = -1)]
 	ecog: Option<i32>,
+	// #[field(default = -1)]
 	liver_mets: Option<i32>,
+	// #[field(default = -1)]
 	lung_mets: Option<i32>,
-	bone_mets: Option<i32>
 }
 
 #[derive(Debug)]
@@ -52,10 +61,13 @@ async fn index() -> Option<NamedFile> {
 // 	print!(input.cfdna_yield);
 
 // 	result
+
 // }
-#[get("/predict")]
-fn predict() -> String {
-	123123.to_string()
+#[get("/predict?<sample..>")]
+fn predict(sample: Option<Sample>){
+	let result = sample.unwrap();
+	println!("{:?}", result);
+	// sample.unwrap().ldh.unwrap().to_string().map_err(Debug)
 }
 
 #[get("/static/<file..>")]
