@@ -4,13 +4,13 @@ fn main (){
     protobuf_codegen::Codegen::new()
     // Use `protoc` parser, optional.
     .protoc()
-    .includes(&["."])
+    .includes(&["protobuf"])
     // Use `protoc-bin-vendored` bundled protoc command, optional.
     // .protoc_path(&protoc_bin_vendored::protoc_bin_path().unwrap())
     // Inputs must reside in some of include paths.
-    .input("./samples.proto")
+    .input("protobuf/samples.proto")
     // .input("src/protos/banana.proto")
     // Specify output directory relative to Cargo output directory.
-    .cargo_out_dir("protos")
+    .cargo_out_dir("protobuf/rust_code")
     .run_from_script();
 }

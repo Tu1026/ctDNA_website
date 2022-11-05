@@ -3,6 +3,7 @@ name = "ctdna"
 edition = "2018"
 version = "0.1.0"
 authors = ["Matti Annala <matti.annala@uta.fi>"]
+default-run = "ctdna"
 
 
 # [features]
@@ -20,8 +21,12 @@ protobuf-codegen = "3.2.0"
 
 
 
+
 [[bin]]
 name = "ctdna"
-# path = "test_py/main.rs"
+# Use this to generate protobuf code for rust
 path = "ctdna_predict.rs"
 
+[[bin]]
+name = "protoGen"
+path = "protobuf/rustProtoGen.rs"
