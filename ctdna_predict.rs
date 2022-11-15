@@ -1,73 +1,66 @@
 
-#[macro_use] extern crate lazy_static;
 #[macro_use] mod common;
 mod samples;
 
 use rocket::{launch, get, routes, fs::NamedFile};
-use rocket::response::status;
-use common::FileReader;
-use std::f32;
+use std::{f32, string};
 use std::path::PathBuf;
-use std::fmt::Write;
-use std::cmp::Ordering;
-use rocket::form::Form;
 use rocket::FromForm;
-use rocket::response::Debug;
-use sample::Sample;	
+use samples::Sample;
 
-lazy_static! {
-	static ref SAMPLES: Vec<ProstateCancerSample> = load_samples();
+
+
+#[derive(FromForm, Debug)]
+struct Sample_web {
+	// #[field(default = -1.0)]
+	cfdna_yield: Option<f64>,
+	// #[field(default = -1.0)]
+	psa: Option<f64>,
+	// #[field(default = -1.0)]
+	ldh: Option<f64>,
+	// #[field(default = -1.0)]
+	alp: Option<f64>,
+	// #[field(default = -1.0)]
+	albumin: Option<f64>,
+	// #[field(default = -1)]
+	ecog: Option<i32>,
+	// #[field(default = -1)]
+	liver_mets: Option<i32>,
+	// #[field(default = -1)]
+	lung_mets: Option<i32>,
 }
 
-// #[derive(FromForm, Debug)]
-// struct Sample {
-// 	// #[field(default = -1.0)]
-// 	cfdna_yield: Option<f32>,
-// 	// #[field(default = -1.0)]
-// 	psa: Option<f32>,
-// 	// #[field(default = -1.0)]
-// 	ldh: Option<f32>,
-// 	// #[field(default = -1.0)]
-// 	alp: Option<f32>,
-// 	// #[field(default = -1.0)]
-// 	albumin: Option<f32>,
-// 	// #[field(default = -1)]
-// 	ecog: Option<i32>,
-// 	// #[field(default = -1)]
-// 	liver_mets: Option<i32>,
-// 	// #[field(default = -1)]
-// 	lung_mets: Option<i32>,
-// }
-
-#[derive(Debug)]
-struct ProstateCancerSample {
-	ctdna_frac: f32,
-	cfdna_yield: Option<f32>,
-	psa: Option<f32>,
-	ldh: Option<f32>,
-	alp: Option<f32>,
-	ecog: Option<u8>,
-	liver_mets: Option<bool>,
-	lung_mets: Option<bool>,
-	bone_mets: Option<bool>
+impl Sample_web {
+	fn to_proto_sample(&self) -> Sample {
+		let mut sample = Sample::new();
+		sample.cfdna_yield = self.cfdna_yield;
+		sample.psa = self.psa;
+		sample.ldh = self.ldh;
+		sample.alp = self.alp;
+		sample.albumin = self.albumin;
+		sample.ecog = self.ecog;
+		sample.liver_mets = self.liver_mets;
+		sample.lung_mets = self.lung_mets;
+		sample
+	}
 }
+	
+
+
 
 #[get("/")]
 async fn index() -> Option<NamedFile> {
 	NamedFile::open("prostate_cancer.html").await.ok()
 }
 
-// #[get("/predict", data = "<datat>")]
-// fn pediction_new(input: Form<WebInput>) -> String {
-// 	print!(input.cfdna_yield);
 
-// 	result
-
-// }
 #[get("/predict?<sample..>")]
-fn predict(sample: Option<Sample>){
+fn predict(sample: Option<Sample_web>) -> String{
 	let result = sample.unwrap();
-	println!("{:?}", result);
+	let sample= result.to_proto_sample();
+	println!("{:?}", sample);
+	println!("albumin: {}", sample.albumin.unwrap().to_string());
+	return sample.albumin.unwrap().to_string();
 	// sample.unwrap().ldh.unwrap().to_string().map_err(Debug)
 }
 
@@ -79,38 +72,8 @@ async fn static_file(file: PathBuf) -> Option<NamedFile> {
 	//file_response(&format!("static/{}", &path), cache(7))
 }
 
-fn load_samples() -> Vec<ProstateCancerSample> {
-	let mut samples: Vec<ProstateCancerSample> = Vec::new();
-	let mut sample_file = FileReader::new("samples.tsv");
-	let mut line = String::new();
-	sample_file.read_line(&mut line);  // Discard header line
-	while sample_file.read_line(&mut line) {
-		let cols: Vec<&str> = line.trim().split('\t').collect();
-		samples.push(ProstateCancerSample {
-			psa: cols[0].parse().ok(),
-			ldh: cols[1].parse().ok(),
-			alp: cols[2].parse().ok(),
-			cfdna_yield: cols[3].parse().ok(),
-			bone_mets: parse_bool(cols[4]),
-			lung_mets: parse_bool(cols[5]),
-			liver_mets: parse_bool(cols[6]),
-			ecog: cols[7].parse().ok(),
-			ctdna_frac: cols[8].parse().unwrap_or_else(|_|
-				error!("Invalid ctDNA%: {}", cols[8]))
-		});
-	}
-	samples
-}
 
-fn distance(test: Option<f32>, known: Option<f32>) -> f32 {
-	if let Some(test) = test {
-		if let Some(known) = known {
-			(test - known).abs()
-		} else { f32::INFINITY }
-	} else {
-		0.0
-	}
-}
+
 
 // #[get("/predict?<cfdna_yield>&<psa>&<ldh>&<alp>&<liver_mets>&<lung_mets>&<bone_mets>&<ecog>")]
 // fn predict(cfdna_yield: Option<f32>, psa: Option<f32>,
@@ -270,7 +233,7 @@ fn parse_bool(val: &str) -> Option<bool> {
 
 #[launch]
 fn rocket() -> _ {
-	eprintln!("Read {} samples from database.", SAMPLES.len());
+	// eprintln!("Read {} samples from database.", SAMPLES.len());
     rocket::build().mount("/", routes![
     	index, static_file, predict
     ])
