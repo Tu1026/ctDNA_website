@@ -4,7 +4,7 @@ use protobuf::Message;
 use samples::{Sample, Classification};
 use std::any::type_name;
 
-fn predict_ctDNA() {
+fn predict_ctDNA(sample: Sample) -> String {
 
 
     println!("Connecting to python ML host...\n");
@@ -17,19 +17,20 @@ fn predict_ctDNA() {
 
     let mut msg = zmq::Message::new();
 
-    let mut sample = Sample::new();
+    // let mut sample = Sample::new();
     
-    sample.cfDNA_ng_mL_plasma =  Some(request_nbr as f64);
-    sample.Albumin =  Some(request_nbr as f64);
-    sample.LDH =  Some(request_nbr as f64);
-    sample.ALP =  Some(request_nbr as f64);
-    sample.PSA =  Some(request_nbr as f64);
-    sample.liver_met =  Some(request_nbr);
-    sample.lung_met =  Some(request_nbr);
-    sample.ecog =  Some(request_nbr);
+    // sample.cfDNA_ng_mL_plasma =  Some(request_nbr as f64);
+    // sample.Albumin =  Some(request_nbr as f64);
+    // sample.LDH =  Some(request_nbr as f64);
+    // sample.ALP =  Some(request_nbr as f64);
+    // sample.PSA =  Some(request_nbr as f64);
+    // sample.liver_met =  Some(request_nbr);
+    // sample.lung_met =  Some(request_nbr);
+    // sample.ecog =  Some(request_nbr);
+    
     let mut class = Classification::new();
     let message = sample.write_to_bytes().unwrap();
-    println!("Sending Hello {}...",  request_nbr);
+
     requester.send(message, 0).unwrap();
 
     requester.recv(&mut msg, 0).unwrap();
@@ -37,6 +38,6 @@ fn predict_ctDNA() {
     // Classification::parse_from_bytes(&mut msg).unwrap();
     let response = Classification::parse_from_bytes(&mut msg).unwrap();
     let is_bool  = response.label.unwrap();
-    println!("Received World {}: {}", is_bool, request_nbr);
+    println!("Receive {}", is_bool);
 
 }
