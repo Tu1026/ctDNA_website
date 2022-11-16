@@ -1,0 +1,2 @@
+[env]
+ROCKET_FRONT_END_FILES = { value = "front_end/", relative = true }
