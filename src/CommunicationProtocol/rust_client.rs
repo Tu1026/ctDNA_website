@@ -1,7 +1,6 @@
 
 use protobuf::Message;
 use crate::CommunicationProtocol::samples::{Sample, Classification};
-use std::any::type_name;
 
 pub fn predict_ctDNA(sample: Sample) -> String {
 
@@ -16,17 +15,7 @@ pub fn predict_ctDNA(sample: Sample) -> String {
 
     let mut msg = zmq::Message::new();
 
-    // let mut sample = Sample::new();
-    
-    // sample.cfDNA_ng_mL_plasma =  Some(request_nbr as f64);
-    // sample.Albumin =  Some(request_nbr as f64);
-    // sample.LDH =  Some(request_nbr as f64);
-    // sample.ALP =  Some(request_nbr as f64);
-    // sample.PSA =  Some(request_nbr as f64);
-    // sample.liver_met =  Some(request_nbr);
-    // sample.lung_met =  Some(request_nbr);
-    // sample.ecog =  Some(request_nbr);
-    
+
     let mut class = Classification::new();
     let message = sample.write_to_bytes().unwrap();
 
@@ -36,8 +25,13 @@ pub fn predict_ctDNA(sample: Sample) -> String {
     // println!("Received World {}\n", std::str::from_utf8(&mut msg).unwrap() );
     // Classification::parse_from_bytes(&mut msg).unwrap();
     let response = Classification::parse_from_bytes(&mut msg).unwrap();
-    let is_bool  = response.label.unwrap();
-    println!("Receive {}", is_bool);
-    "0".to_string()
+    let is_positive  = response.label.unwrap();
+    println!("Receive {:}", response);
+
+    if is_positive {
+        format!(">2\n{}", response.positive_proba.unwrap().to_string())
+    } else {
+        format!("<=2\n{}", response.negative_proba.unwrap().to_string())
+    }
 
 }
