@@ -2,7 +2,7 @@
 #[macro_use] mod common;
 pub mod CommunicationProtocol;
 use rocket::{launch, get, routes, fs::NamedFile};
-use std::{f32, string, env};
+use std::{f32,  env};
 use std::path::PathBuf;
 use rocket::FromForm;
 use CommunicationProtocol::samples::Sample;
@@ -61,7 +61,7 @@ fn predict(sample: Option<Sample_web>) -> String{
 	let prediction_string = predict_ctDNA(sample);
 	println!{"prediction_string: {}", prediction_string};
 	prediction_string
-	// return test;
+
 }
 
 #[get("/static/<file..>")]
@@ -82,13 +82,3 @@ fn rocket() -> _ {
     ])
 }
 
-/*
-fn main() {
-	HttpServer::new(|| App::new()
-		.wrap(middleware::NormalizePath::new(middleware::TrailingSlash::Trim))
-		.service(index)
-		.service(static_file)
-		.route(predict_ctdna_frac)
-	).bind("127.0.0.1:8368")
-	.unwrap_or_else(|_| error!("Cannot bind port 8368.")).run();
-}*/
