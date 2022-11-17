@@ -16,7 +16,6 @@ function handleSubmit(event) {
     console.log(queryString);
 
     if (check_input_valid(queryString)) {
-        console.log("was valid");
         var request = new XMLHttpRequest();
         request.open("GET", "/predict?" + queryString.toString(), true);
         request.onload = function() {
@@ -98,11 +97,12 @@ function clear_prediction() {
 // TODO: Use bootstrapping to estimate prediction interval for KNN model.
 function display_prediction(d) {
     let lines = d.split("\n");
-    let estimate = lines.shift(); // First line gives ctDNA% estimate
-    if (estimate == "0.0") {
-        estimate = "0 - 2";
-    }
-    $(
-        "#results"
-    ).innerHTML = `Predicted ctDNA%<br><span id="estimate">${estimate}%</span><br>for a patient with progressive disease`;
+    console.log("d: ", d);
+    console.log("d0: ", d[0]);
+    console.log("d1: ", d[1]);
+    $("#results").innerHTML = `Predicted ctDNA%<br><span id="estimate">${
+    lines[0]
+  }%</span><br>for a patient with progressive disease<br>The prediction has a confidence of ${parseFloat(
+    lines[1]
+  ).toFixed(2)}`;
 }
