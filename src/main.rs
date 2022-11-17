@@ -45,7 +45,6 @@ impl Sample_web {
 	
 
 
-
 #[get("/")]
 async fn index() -> Option<NamedFile> {
 	// NamedFile::open("front_end/prostate_cancer.html").await.ok()
@@ -59,32 +58,16 @@ fn predict(sample: Option<Sample_web>) -> String{
 	let result = sample.unwrap();
 	let sample= result.to_proto_sample();
 	println!("{:?}", sample);
-	println!("albumin: {}", sample.albumin.unwrap().to_string());
-	return sample.albumin.unwrap().to_string();
-	// sample.unwrap().ldh.unwrap().to_string().map_err(Debug)
+	let prediction_string = predict_ctDNA(sample);
+	println!{"prediction_string: {}", prediction_string};
+	prediction_string
+	// return test;
 }
 
 #[get("/static/<file..>")]
 async fn static_file(file: PathBuf) -> Option<NamedFile> {
-	let test = format!("static/{}", file.display());
-	let base = env!("ROCKET_FRONT_END_FILES"); 
-	let fina =  base.to_owned() + &test;
-	println!("file: {}", fina);
 	NamedFile::open(env!("ROCKET_FRONT_END_FILES").to_owned()+ &format!("static/{}", file.display())).await.ok()
-	// NamedFile::open(&format!("front_end/static/{}", file.display())).await.ok()
 
-	//let path = path.into_inner();
-	//if !is_path_safe(&path) { return not_found_404(); }
-	//file_response(&format!("static/{}", &path), cache(7))
-}
-
-
-fn parse_bool(val: &str) -> Option<bool> {
-	match val {
-		"Yes" | "yes" | "true" => Some(true),
-		"No" | "no" | "false" => Some(false),
-		_ => None
-	}
 }
 
 
