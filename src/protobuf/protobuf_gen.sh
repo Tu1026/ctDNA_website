@@ -3,4 +3,4 @@
 cd "$(dirname $0)"
 cd ".."
 cargo run --bin protoGen
-protoc -I=.  --python_out=.  src/protobuf/samples.proto
+protoc -I=.  --python_out=.  protobuf/samples.proto
