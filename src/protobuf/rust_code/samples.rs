@@ -31,20 +31,20 @@ pub struct Sample {
     // message fields
     // @@protoc_insertion_point(field:samples.Sample.cfdna_yield)
     pub cfdna_yield: ::std::option::Option<f64>,
-    // @@protoc_insertion_point(field:samples.Sample.albumin)
-    pub albumin: ::std::option::Option<f64>,
+    // @@protoc_insertion_point(field:samples.Sample.psa)
+    pub psa: ::std::option::Option<f64>,
     // @@protoc_insertion_point(field:samples.Sample.ldh)
     pub ldh: ::std::option::Option<f64>,
     // @@protoc_insertion_point(field:samples.Sample.alp)
     pub alp: ::std::option::Option<f64>,
-    // @@protoc_insertion_point(field:samples.Sample.psa)
-    pub psa: ::std::option::Option<f64>,
+    // @@protoc_insertion_point(field:samples.Sample.albumin)
+    pub albumin: ::std::option::Option<f64>,
+    // @@protoc_insertion_point(field:samples.Sample.ecog)
+    pub ecog: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:samples.Sample.liver_mets)
     pub liver_mets: ::std::option::Option<i32>,
     // @@protoc_insertion_point(field:samples.Sample.lung_mets)
     pub lung_mets: ::std::option::Option<i32>,
-    // @@protoc_insertion_point(field:samples.Sample.ecog)
-    pub ecog: ::std::option::Option<i32>,
     // special fields
     // @@protoc_insertion_point(special_field:samples.Sample.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
@@ -80,23 +80,23 @@ impl Sample {
         self.cfdna_yield = ::std::option::Option::Some(v);
     }
 
-    // optional double albumin = 2;
+    // optional double psa = 2;
 
-    pub fn albumin(&self) -> f64 {
-        self.albumin.unwrap_or(-1.0f64)
+    pub fn psa(&self) -> f64 {
+        self.psa.unwrap_or(-1.0f64)
     }
 
-    pub fn clear_albumin(&mut self) {
-        self.albumin = ::std::option::Option::None;
+    pub fn clear_psa(&mut self) {
+        self.psa = ::std::option::Option::None;
     }
 
-    pub fn has_albumin(&self) -> bool {
-        self.albumin.is_some()
+    pub fn has_psa(&self) -> bool {
+        self.psa.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_albumin(&mut self, v: f64) {
-        self.albumin = ::std::option::Option::Some(v);
+    pub fn set_psa(&mut self, v: f64) {
+        self.psa = ::std::option::Option::Some(v);
     }
 
     // optional double ldh = 3;
@@ -137,64 +137,26 @@ impl Sample {
         self.alp = ::std::option::Option::Some(v);
     }
 
-    // optional double psa = 5;
+    // optional double albumin = 5;
 
-    pub fn psa(&self) -> f64 {
-        self.psa.unwrap_or(-1.0f64)
+    pub fn albumin(&self) -> f64 {
+        self.albumin.unwrap_or(-1.0f64)
     }
 
-    pub fn clear_psa(&mut self) {
-        self.psa = ::std::option::Option::None;
+    pub fn clear_albumin(&mut self) {
+        self.albumin = ::std::option::Option::None;
     }
 
-    pub fn has_psa(&self) -> bool {
-        self.psa.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_psa(&mut self, v: f64) {
-        self.psa = ::std::option::Option::Some(v);
-    }
-
-    // optional int32 liver_mets = 6;
-
-    pub fn liver_mets(&self) -> i32 {
-        self.liver_mets.unwrap_or(-1i32)
-    }
-
-    pub fn clear_liver_mets(&mut self) {
-        self.liver_mets = ::std::option::Option::None;
-    }
-
-    pub fn has_liver_mets(&self) -> bool {
-        self.liver_mets.is_some()
+    pub fn has_albumin(&self) -> bool {
+        self.albumin.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_liver_mets(&mut self, v: i32) {
-        self.liver_mets = ::std::option::Option::Some(v);
+    pub fn set_albumin(&mut self, v: f64) {
+        self.albumin = ::std::option::Option::Some(v);
     }
 
-    // optional int32 lung_mets = 7;
-
-    pub fn lung_mets(&self) -> i32 {
-        self.lung_mets.unwrap_or(-1i32)
-    }
-
-    pub fn clear_lung_mets(&mut self) {
-        self.lung_mets = ::std::option::Option::None;
-    }
-
-    pub fn has_lung_mets(&self) -> bool {
-        self.lung_mets.is_some()
-    }
-
-    // Param is passed by value, moved
-    pub fn set_lung_mets(&mut self, v: i32) {
-        self.lung_mets = ::std::option::Option::Some(v);
-    }
-
-    // optional int32 ecog = 8;
+    // optional int32 ecog = 6;
 
     pub fn ecog(&self) -> i32 {
         self.ecog.unwrap_or(-1i32)
@@ -213,6 +175,44 @@ impl Sample {
         self.ecog = ::std::option::Option::Some(v);
     }
 
+    // optional int32 liver_mets = 7;
+
+    pub fn liver_mets(&self) -> i32 {
+        self.liver_mets.unwrap_or(-1i32)
+    }
+
+    pub fn clear_liver_mets(&mut self) {
+        self.liver_mets = ::std::option::Option::None;
+    }
+
+    pub fn has_liver_mets(&self) -> bool {
+        self.liver_mets.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_liver_mets(&mut self, v: i32) {
+        self.liver_mets = ::std::option::Option::Some(v);
+    }
+
+    // optional int32 lung_mets = 8;
+
+    pub fn lung_mets(&self) -> i32 {
+        self.lung_mets.unwrap_or(-1i32)
+    }
+
+    pub fn clear_lung_mets(&mut self) {
+        self.lung_mets = ::std::option::Option::None;
+    }
+
+    pub fn has_lung_mets(&self) -> bool {
+        self.lung_mets.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_lung_mets(&mut self, v: i32) {
+        self.lung_mets = ::std::option::Option::Some(v);
+    }
+
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
         let mut fields = ::std::vec::Vec::with_capacity(8);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
@@ -222,9 +222,9 @@ impl Sample {
             |m: &mut Sample| { &mut m.cfdna_yield },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
-            "albumin",
-            |m: &Sample| { &m.albumin },
-            |m: &mut Sample| { &mut m.albumin },
+            "psa",
+            |m: &Sample| { &m.psa },
+            |m: &mut Sample| { &mut m.psa },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
             "ldh",
@@ -237,9 +237,14 @@ impl Sample {
             |m: &mut Sample| { &mut m.alp },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
-            "psa",
-            |m: &Sample| { &m.psa },
-            |m: &mut Sample| { &mut m.psa },
+            "albumin",
+            |m: &Sample| { &m.albumin },
+            |m: &mut Sample| { &mut m.albumin },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
+            "ecog",
+            |m: &Sample| { &m.ecog },
+            |m: &mut Sample| { &mut m.ecog },
         ));
         fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
             "liver_mets",
@@ -250,11 +255,6 @@ impl Sample {
             "lung_mets",
             |m: &Sample| { &m.lung_mets },
             |m: &mut Sample| { &mut m.lung_mets },
-        ));
-        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
-            "ecog",
-            |m: &Sample| { &m.ecog },
-            |m: &mut Sample| { &mut m.ecog },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Sample>(
             "Sample",
@@ -278,7 +278,7 @@ impl ::protobuf::Message for Sample {
                     self.cfdna_yield = ::std::option::Option::Some(is.read_double()?);
                 },
                 17 => {
-                    self.albumin = ::std::option::Option::Some(is.read_double()?);
+                    self.psa = ::std::option::Option::Some(is.read_double()?);
                 },
                 25 => {
                     self.ldh = ::std::option::Option::Some(is.read_double()?);
@@ -287,16 +287,16 @@ impl ::protobuf::Message for Sample {
                     self.alp = ::std::option::Option::Some(is.read_double()?);
                 },
                 41 => {
-                    self.psa = ::std::option::Option::Some(is.read_double()?);
+                    self.albumin = ::std::option::Option::Some(is.read_double()?);
                 },
                 48 => {
-                    self.liver_mets = ::std::option::Option::Some(is.read_int32()?);
+                    self.ecog = ::std::option::Option::Some(is.read_int32()?);
                 },
                 56 => {
-                    self.lung_mets = ::std::option::Option::Some(is.read_int32()?);
+                    self.liver_mets = ::std::option::Option::Some(is.read_int32()?);
                 },
                 64 => {
-                    self.ecog = ::std::option::Option::Some(is.read_int32()?);
+                    self.lung_mets = ::std::option::Option::Some(is.read_int32()?);
                 },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
@@ -313,7 +313,7 @@ impl ::protobuf::Message for Sample {
         if let Some(v) = self.cfdna_yield {
             my_size += 1 + 8;
         }
-        if let Some(v) = self.albumin {
+        if let Some(v) = self.psa {
             my_size += 1 + 8;
         }
         if let Some(v) = self.ldh {
@@ -322,16 +322,16 @@ impl ::protobuf::Message for Sample {
         if let Some(v) = self.alp {
             my_size += 1 + 8;
         }
-        if let Some(v) = self.psa {
+        if let Some(v) = self.albumin {
             my_size += 1 + 8;
         }
-        if let Some(v) = self.liver_mets {
+        if let Some(v) = self.ecog {
             my_size += ::protobuf::rt::int32_size(6, v);
         }
-        if let Some(v) = self.lung_mets {
+        if let Some(v) = self.liver_mets {
             my_size += ::protobuf::rt::int32_size(7, v);
         }
-        if let Some(v) = self.ecog {
+        if let Some(v) = self.lung_mets {
             my_size += ::protobuf::rt::int32_size(8, v);
         }
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
@@ -343,7 +343,7 @@ impl ::protobuf::Message for Sample {
         if let Some(v) = self.cfdna_yield {
             os.write_double(1, v)?;
         }
-        if let Some(v) = self.albumin {
+        if let Some(v) = self.psa {
             os.write_double(2, v)?;
         }
         if let Some(v) = self.ldh {
@@ -352,16 +352,16 @@ impl ::protobuf::Message for Sample {
         if let Some(v) = self.alp {
             os.write_double(4, v)?;
         }
-        if let Some(v) = self.psa {
+        if let Some(v) = self.albumin {
             os.write_double(5, v)?;
         }
-        if let Some(v) = self.liver_mets {
+        if let Some(v) = self.ecog {
             os.write_int32(6, v)?;
         }
-        if let Some(v) = self.lung_mets {
+        if let Some(v) = self.liver_mets {
             os.write_int32(7, v)?;
         }
-        if let Some(v) = self.ecog {
+        if let Some(v) = self.lung_mets {
             os.write_int32(8, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
@@ -382,26 +382,26 @@ impl ::protobuf::Message for Sample {
 
     fn clear(&mut self) {
         self.cfdna_yield = ::std::option::Option::None;
-        self.albumin = ::std::option::Option::None;
+        self.psa = ::std::option::Option::None;
         self.ldh = ::std::option::Option::None;
         self.alp = ::std::option::Option::None;
-        self.psa = ::std::option::Option::None;
+        self.albumin = ::std::option::Option::None;
+        self.ecog = ::std::option::Option::None;
         self.liver_mets = ::std::option::Option::None;
         self.lung_mets = ::std::option::Option::None;
-        self.ecog = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static Sample {
         static instance: Sample = Sample {
             cfdna_yield: ::std::option::Option::None,
-            albumin: ::std::option::Option::None,
+            psa: ::std::option::Option::None,
             ldh: ::std::option::Option::None,
             alp: ::std::option::Option::None,
-            psa: ::std::option::Option::None,
+            albumin: ::std::option::Option::None,
+            ecog: ::std::option::Option::None,
             liver_mets: ::std::option::Option::None,
             lung_mets: ::std::option::Option::None,
-            ecog: ::std::option::Option::None,
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -431,6 +431,10 @@ pub struct Classification {
     // message fields
     // @@protoc_insertion_point(field:samples.Classification.label)
     pub label: ::std::option::Option<bool>,
+    // @@protoc_insertion_point(field:samples.Classification.positive_proba)
+    pub positive_proba: ::std::option::Option<f64>,
+    // @@protoc_insertion_point(field:samples.Classification.negative_proba)
+    pub negative_proba: ::std::option::Option<f64>,
     // special fields
     // @@protoc_insertion_point(special_field:samples.Classification.special_fields)
     pub special_fields: ::protobuf::SpecialFields,
@@ -466,13 +470,61 @@ impl Classification {
         self.label = ::std::option::Option::Some(v);
     }
 
+    // optional double positive_proba = 2;
+
+    pub fn positive_proba(&self) -> f64 {
+        self.positive_proba.unwrap_or(0.)
+    }
+
+    pub fn clear_positive_proba(&mut self) {
+        self.positive_proba = ::std::option::Option::None;
+    }
+
+    pub fn has_positive_proba(&self) -> bool {
+        self.positive_proba.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_positive_proba(&mut self, v: f64) {
+        self.positive_proba = ::std::option::Option::Some(v);
+    }
+
+    // optional double negative_proba = 3;
+
+    pub fn negative_proba(&self) -> f64 {
+        self.negative_proba.unwrap_or(0.)
+    }
+
+    pub fn clear_negative_proba(&mut self) {
+        self.negative_proba = ::std::option::Option::None;
+    }
+
+    pub fn has_negative_proba(&self) -> bool {
+        self.negative_proba.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_negative_proba(&mut self, v: f64) {
+        self.negative_proba = ::std::option::Option::Some(v);
+    }
+
     fn generated_message_descriptor_data() -> ::protobuf::reflect::GeneratedMessageDescriptorData {
-        let mut fields = ::std::vec::Vec::with_capacity(1);
+        let mut fields = ::std::vec::Vec::with_capacity(3);
         let mut oneofs = ::std::vec::Vec::with_capacity(0);
         fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
             "label",
             |m: &Classification| { &m.label },
             |m: &mut Classification| { &mut m.label },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
+            "positive_proba",
+            |m: &Classification| { &m.positive_proba },
+            |m: &mut Classification| { &mut m.positive_proba },
+        ));
+        fields.push(::protobuf::reflect::rt::v2::make_option_accessor::<_, _>(
+            "negative_proba",
+            |m: &Classification| { &m.negative_proba },
+            |m: &mut Classification| { &mut m.negative_proba },
         ));
         ::protobuf::reflect::GeneratedMessageDescriptorData::new_2::<Classification>(
             "Classification",
@@ -495,6 +547,12 @@ impl ::protobuf::Message for Classification {
                 8 => {
                     self.label = ::std::option::Option::Some(is.read_bool()?);
                 },
+                17 => {
+                    self.positive_proba = ::std::option::Option::Some(is.read_double()?);
+                },
+                25 => {
+                    self.negative_proba = ::std::option::Option::Some(is.read_double()?);
+                },
                 tag => {
                     ::protobuf::rt::read_unknown_or_skip_group(tag, is, self.special_fields.mut_unknown_fields())?;
                 },
@@ -510,6 +568,12 @@ impl ::protobuf::Message for Classification {
         if let Some(v) = self.label {
             my_size += 1 + 1;
         }
+        if let Some(v) = self.positive_proba {
+            my_size += 1 + 8;
+        }
+        if let Some(v) = self.negative_proba {
+            my_size += 1 + 8;
+        }
         my_size += ::protobuf::rt::unknown_fields_size(self.special_fields.unknown_fields());
         self.special_fields.cached_size().set(my_size as u32);
         my_size
@@ -518,6 +582,12 @@ impl ::protobuf::Message for Classification {
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream<'_>) -> ::protobuf::Result<()> {
         if let Some(v) = self.label {
             os.write_bool(1, v)?;
+        }
+        if let Some(v) = self.positive_proba {
+            os.write_double(2, v)?;
+        }
+        if let Some(v) = self.negative_proba {
+            os.write_double(3, v)?;
         }
         os.write_unknown_fields(self.special_fields.unknown_fields())?;
         ::std::result::Result::Ok(())
@@ -537,12 +607,16 @@ impl ::protobuf::Message for Classification {
 
     fn clear(&mut self) {
         self.label = ::std::option::Option::None;
+        self.positive_proba = ::std::option::Option::None;
+        self.negative_proba = ::std::option::Option::None;
         self.special_fields.clear();
     }
 
     fn default_instance() -> &'static Classification {
         static instance: Classification = Classification {
             label: ::std::option::Option::None,
+            positive_proba: ::std::option::Option::None,
+            negative_proba: ::std::option::Option::None,
             special_fields: ::protobuf::SpecialFields::new(),
         };
         &instance
@@ -568,14 +642,15 @@ impl ::protobuf::reflect::ProtobufValue for Classification {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\rsamples.proto\x12\x07samples\"\xe9\x01\n\x06Sample\x12#\n\x0bcfdna_y\
-    ield\x18\x01\x20\x01(\x01:\x02-1R\ncfdnaYield\x12\x1c\n\x07albumin\x18\
-    \x02\x20\x01(\x01:\x02-1R\x07albumin\x12\x14\n\x03ldh\x18\x03\x20\x01(\
-    \x01:\x02-1R\x03ldh\x12\x14\n\x03alp\x18\x04\x20\x01(\x01:\x02-1R\x03alp\
-    \x12\x14\n\x03psa\x18\x05\x20\x01(\x01:\x02-1R\x03psa\x12!\n\nliver_mets\
-    \x18\x06\x20\x01(\x05:\x02-1R\tliverMets\x12\x1f\n\tlung_mets\x18\x07\
-    \x20\x01(\x05:\x02-1R\x08lungMets\x12\x16\n\x04ecog\x18\x08\x20\x01(\x05\
-    :\x02-1R\x04ecog\"&\n\x0eClassification\x12\x14\n\x05label\x18\x01\x20\
-    \x01(\x08R\x05label\
+    ield\x18\x01\x20\x01(\x01:\x02-1R\ncfdnaYield\x12\x14\n\x03psa\x18\x02\
+    \x20\x01(\x01:\x02-1R\x03psa\x12\x14\n\x03ldh\x18\x03\x20\x01(\x01:\x02-\
+    1R\x03ldh\x12\x14\n\x03alp\x18\x04\x20\x01(\x01:\x02-1R\x03alp\x12\x1c\n\
+    \x07albumin\x18\x05\x20\x01(\x01:\x02-1R\x07albumin\x12\x16\n\x04ecog\
+    \x18\x06\x20\x01(\x05:\x02-1R\x04ecog\x12!\n\nliver_mets\x18\x07\x20\x01\
+    (\x05:\x02-1R\tliverMets\x12\x1f\n\tlung_mets\x18\x08\x20\x01(\x05:\x02-\
+    1R\x08lungMets\"t\n\x0eClassification\x12\x14\n\x05label\x18\x01\x20\x01\
+    (\x08R\x05label\x12%\n\x0epositive_proba\x18\x02\x20\x01(\x01R\rpositive\
+    Proba\x12%\n\x0enegative_proba\x18\x03\x20\x01(\x01R\rnegativeProba\
 ";
 
 /// `FileDescriptorProto` object which was a source for this generated file
