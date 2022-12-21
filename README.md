@@ -1,4 +1,6 @@
 # ctDNA_website
+This website is built using the Rocket framework with Rust interacting with ML model trained using Ray and Xgboost. The cross-language communication is acheived using protobuf and zeromq.
+
 My implementation of a website that uses Rust and simple javascript to host a machine learning model that is trained on 700+ metastatic prostate cancer patients
 
 # ctdna_predict
